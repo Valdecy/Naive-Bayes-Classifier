@@ -82,10 +82,7 @@ def naive_bayes_classification(Xdata, ydata, laplacian_correction = True):
     for i in range(0, len(sequence_1)):
         probability_table.iloc[i, 0] = sequence_2[i]
         probability_table.iloc[i, 1] = sequence_1[i]
-
-    labels_cat = np.array(unique_categories[0])
-    labels_cat = labels_cat.reshape(1, len(unique_categories[0]))
-        
+       
     for i in range(1, dataset.shape[1]):        
 
         contigency_table = pd.crosstab(dataset.iloc[:,0], dataset.iloc[:,i], margins = False)

@@ -37,6 +37,10 @@ def naive_bayes_prediction(nb_model, Test_data):
                 temp = posteriori
     return data
 
+# Function: List Intersection
+def intersection(lst1, lst2):
+    return list(set(lst1) & set(lst2))
+
 # Function: Naive Bayes Classication
 def naive_bayes_classification(Xdata, ydata, laplacian_correction = True):
     label_name = ydata.name
@@ -82,9 +86,8 @@ def naive_bayes_classification(Xdata, ydata, laplacian_correction = True):
     for i in range(0, len(sequence_1)):
         probability_table.iloc[i, 0] = sequence_2[i]
         probability_table.iloc[i, 1] = sequence_1[i]
-       
+        
     for i in range(1, dataset.shape[1]):        
-
         contigency_table = pd.crosstab(dataset.iloc[:,0], dataset.iloc[:,i], margins = False)
         category = list(contigency_table)
         for j in range(3, probability_table.shape[1]):
@@ -93,13 +96,13 @@ def naive_bayes_classification(Xdata, ydata, laplacian_correction = True):
                 if (laplacian_correction == False):
                     numerator = contigency_table.loc[label,category[k]]
                     divisor = contigency_table.loc[label,:].sum()
-                    idx = probability_table.index[probability_table['Categories'] == category[k]].tolist()[0]
+                    idx = intersection(probability_table.index[probability_table['Categories'] == category[k]].tolist(), probability_table.index[probability_table['Attributes'] == list(dataset)[i]].tolist())[0]
                     probability_table.loc[idx, label] = numerator/divisor
                     probability_table.loc[idx, "Frequency"] = probability_table.loc[idx, "Frequency"] + contigency_table.loc[label,category[k]]/contigency_table.values.sum()
                 else:
                     numerator = contigency_table.loc[label,category[k]] + 1
                     divisor = contigency_table.loc[label,:].sum() + len(category)
-                    idx = probability_table.index[probability_table['Categories'] == category[k]].tolist()[0]
+                    idx = intersection(probability_table.index[probability_table['Categories'] == category[k]].tolist(), probability_table.index[probability_table['Attributes'] == list(dataset)[i]].tolist())[0]
                     probability_table.loc[idx, label] = numerator/divisor
                     probability_table.loc[idx, "Frequency"] = probability_table.loc[idx, "Frequency"] + contigency_table.loc[label,category[k]]/contigency_table.values.sum()
     

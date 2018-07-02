@@ -25,7 +25,7 @@ def naive_bayes_prediction(nb_model, Test_data):
         for k in range(0, nb_model[1].shape[0]):
             likelihood = 1
             for j in range(1, data.shape[1]):
-                idx = nb_model[0].index[nb_model[0]['Categories'] == data.iloc[i,j]].tolist()[0]
+                idx = intersection(nb_model[0].index[nb_model[0]['Categories'] == data.iloc[i,j]].tolist(), nb_model[0].index[nb_model[0]['Attributes'] == list(data)[j]].tolist())[0]
                 likelihood = likelihood*nb_model[0].iloc[idx, k + 3]
             posteriori = ((likelihood*nb_model[1].iloc[k,2]))   
             print("p(", nb_model[1].iloc[0,0],   "{", nb_model[1].iloc[k,1], "} │ X_", i+1, ")", "=", round(posteriori, 4))

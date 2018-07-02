@@ -1,5 +1,7 @@
 # Naive-Bayes-Classifier
-Naive Bayes Classifier for  Supervised Learning Problems. The function returns: 1) The Likelihood and the Evidence probabilities. 2) The A Priori probabilty.
+Naive Bayes Classifier for  Supervised Learning Problems. The function returns: 1) The Likelihood and the Evidence probabilities. 2) The A Priori probability. 
+
+The Classification is done by the prediction function with the trainned model anda the test data. 
 
 * Xdata = Dataset Attributes
 

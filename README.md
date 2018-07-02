@@ -5,6 +5,6 @@ Naive Bayes Classifier for  Supervised Learning Problems. The function returns: 
 
 * ydata = Dataset Target
 
-* laplacian_correction = Aplies the Laplacian Correction to avoid zero counting problems. The Default Value is True.
+* laplacian_correction = Aplies the Laplacian Correction to Avoid zero counting problems. The Default Value is True.
 
 * Finnaly a prediction function - naive_bayes_prediction( ) - is also included.

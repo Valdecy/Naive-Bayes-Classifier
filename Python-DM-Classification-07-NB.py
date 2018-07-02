@@ -122,7 +122,7 @@ def naive_bayes_classification(Xdata, ydata, laplacian_correction = True):
 
 ######################## Part 1 - Usage ####################################
 
-# Calling the Classifier
+# Trainning the Classifier
 trainning = pd.read_csv('Python-DM-Classification-07-NBa.csv', sep = ';')
 X = trainning.iloc[:, 0:4]
 y = trainning.iloc[:, 4]
